@@ -1,0 +1,105 @@
+# .gitignore for C# Projects
+
+# Ignore Visual Studio files and folders
+.vs/
+*.user
+*.suo
+*.sln.docstates
+*.userprefs
+*.ide
+*.opendocument
+
+# Ignore build outputs
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.scc
+
+# Ignore NuGet packages
+/packages/*
+!/packages/repositories.config
+*.nupkg
+*.snupkg
+global.json
+
+# Ignore test results
+[Tt]est[Rr]esult*
+[Bb]uildLog.*
+
+# Ignore code analysis results
+StyleCop.*
+*.CodeAnalysisLog.xml
+
+# Ignore temporary files
+*~
+~$*
+*.bak
+*.swp
+*.sh~
+*.DS_Store # macOS
+Thumbs.db
+
+# Ignore publish output
+/publish/
+
+# Ignore ReSharper files
+_ReSharper*
+*.[Rr]e[Ss]harper.*
+
+# Ignore Rider files
+.idea/
+
+# Ignore VS Code files
+.vscode/
+
+# Ignore Unity
+/Library
+/Temp
+/Obj
+/Build
+/Build*
+!/Assets/
+!/ProjectSettings/
+!/Packages/
+
+#Ignore .Net Core Tooling
+/tool
+/artifacts
+
+# Configuration files that might contain sensitive data, but you *may* want to include specific ones
+# *.config
+# appsettings.json # Often customized per environment, so consider carefully
+# !appsettings.Development.json
+# !appsettings.Production.json
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Azure files
+*.publishsettings
