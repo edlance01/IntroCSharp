@@ -14,7 +14,7 @@ namespace Aviation
         public int Quantity { get; set; } = 0;
         public decimal Price { get; set; } = 0m;
 
-        public decimal TotalValue
+        public decimal PartValue
         {
             get
             {
@@ -24,7 +24,7 @@ namespace Aviation
         public virtual string GetPartInfo()
         {
             return $"Part Number: {Number}, Name {Name}, Quantity {Quantity}," +
-                $" Price: {Price:C}, Total Value: {TotalValue:C}";
+                $" Price: {Price:C}, Total Value: {PartValue:C}";
         }
 
     }

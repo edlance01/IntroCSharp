@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Demos\\Demo_Methods",
+    "\\Demos\\Demo_Methods\\Aviation",
+    "\\Lab7x_challenge",
+    "\\Lab7x_challenge\\Aviation"
   ],
+  "SelectedNode": "\\Lab7x_challenge\\Aviation\\AddEngineCommand.cs",
   "PreviewInSolutionExplorer": false
 }

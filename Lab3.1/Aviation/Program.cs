@@ -57,7 +57,7 @@ for (int i = 0; i < 3 && !stopLoop; i++)
         }
         else if(!int.TryParse(quantity, out partQuantity) || partQuantity <= 0)
         {
-            Console.WriteLine("Quantity must be and integer greater than zero.");
+            Console.WriteLine("Quantity must be an integer greater than zero.");
             continue;
         }
         else

@@ -30,7 +30,7 @@ else if(!int.TryParse(quantity, out int partQty))
 {
     Console.WriteLine("Quantity must be an integer");
 }
-else if(!double.TryParse(price, out double partPrice))
+else if(!decimal.TryParse(price, out decimal partPrice))
 {
     Console.WriteLine("Quantity must be a decimal.");
 }

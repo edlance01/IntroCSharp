@@ -1,5 +1,6 @@
 ﻿
 
+
 class Program
 {
     public static void Main(string[] args)
@@ -14,6 +15,7 @@ class Program
             {
                 case "add":
                     var part = AddAviationPart();
+                 
                     if (part.Number != null)
                     {
                         decimal partValue = part.Quantity * part.Price;

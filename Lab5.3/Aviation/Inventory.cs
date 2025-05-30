@@ -9,8 +9,12 @@ namespace Aviation
 {
     internal class Inventory
     {
+        //array of AviationParts that is 100 elements long
         private AviationPart[] AviationParts { get; } = new AviationPart[100];
+        //counter to show me populated elemtns of the AviationParts array
         private int AviationPartsCount { get; set; } = 0;
+
+        //calculates and holds total quantity of ALL elements in the array
         public int TotalQuantity
         {
             get
@@ -23,6 +27,7 @@ namespace Aviation
                 return totalQuantity;
             }
         }
+        //this is total value of ALL objects populated in my array
         public decimal TotalValue   
         {
             get
@@ -43,34 +48,43 @@ namespace Aviation
        
             while (true)
             {
+                //get user input
                 Console.Write("Please enter a command: add, list, total, or exit: ");
                 string? command = Console.ReadLine();
+
+                //switch statements acts as the controller
                 switch (command)
                 {
                     case "add":
                         var part = AddAviationPart();
                         if (part != null)
                         {
-                            int i = 0;  //want to use i outside of for loop
-                            for (; i < AviationPartsCount; i++)
+                            //loops through array and overwrites values IF it finds a matching part number
+                            int i;  //want to use i outside of for loop
+                            for (i =0; i < AviationPartsCount; i++)
                             {
                                 if (AviationParts[i].Number.Equals(part.Number, StringComparison.OrdinalIgnoreCase))
                                 {
                                     AviationParts[i] = part;
+                       
                                     break;
                                 }
                             }
+                            //assigns currently created part to first open slot in array
                             if (i == AviationPartsCount)
                             {
                                 AviationParts[AviationPartsCount] = part;
                                 AviationPartsCount++;
                             }
+
+                            //calculates and calls function to print value for just CURRENT part
                             decimal partValue = part.Quantity * part.Price;
-                            PrintInventoryValue(part.Number, partValue);
+                            PrintCurrentPartValue(part.Number, partValue);
                         }
                         break;
                     case "list":
-                        PrintAviationParts(AviationParts, AviationPartsCount);
+                        //PrintAviationParts(AviationParts, AviationPartsCount);
+                        PrintAviationParts();
                         break;
                     case "total":
                         PrintInventoryTotals(TotalQuantity, TotalValue);
@@ -87,19 +101,30 @@ namespace Aviation
 
         }
          
-        private void PrintAviationParts(AviationPart[] avaiationParts, int aviationPartsCount)
+        //private void PrintAviationParts(AviationPart[] avaiationParts, int aviationPartsCount)
+        //{
+        //    Console.WriteLine("Aviation Parts: ");
+        //    for (int i = 0; i < aviationPartsCount; i++)
+        //    {
+        //        Console.WriteLine($"Part Number: {AviationParts[i].Number}, Name: {AviationParts[i].Name}, Quantity: {AviationParts[i].Quantity}" +
+        //                            $" Price: {AviationParts[i].Price}, Value: {AviationParts[i].Quantity * AviationParts[i].Price}");
+        //    }
+        //}
+
+        //this method loops through the array and prints all values of all properties
+        private void PrintAviationParts()
         {
             Console.WriteLine("Aviation Parts: ");
-            for (int i = 0; i < aviationPartsCount; i++)
+            for (int i = 0; i < AviationPartsCount; i++)
             {
                 Console.WriteLine($"Part Number: {AviationParts[i].Number}, Name: {AviationParts[i].Name}, Quantity: {AviationParts[i].Quantity}" +
-                                    $" Price: {AviationParts[i].Price}, Value: {AviationParts[i].Quantity * AviationParts[i].Price}");
+                                    $" Price: {AviationParts[i].Price}, Value: {TotalValue}");
             }
         }
 
-        private void PrintInventoryValue(string? partNumber, decimal partValue)
+        private void PrintCurrentPartValue(string? partNumber, decimal partValue)
         {
-            Console.WriteLine($"The inventory value for {partNumber} is: {partValue}");
+            Console.WriteLine($"The part value for {partNumber} is: {partValue}");
         }
 
         private void PrintInventoryTotals(int totalQuantity, decimal totalValue)
@@ -108,6 +133,9 @@ namespace Aviation
             Console.WriteLine($"The total inventory value is: {totalValue}");
         }
 
+        //collects the actual data for each property by invoking its specific method
+        //creates (instatiates) an AviationPart object (instance)
+        //returns the AviationPart instance to the caller
         private AviationPart? AddAviationPart()
         {
             string? partNumber = AddAviationPartNumber();
@@ -119,7 +147,8 @@ namespace Aviation
             string partName = AddAviationPartName(partNumber);
             int partQuantity = AddAviationPartQuantity(partNumber);
             decimal partPrice = AddAviationPartPrice(partNumber);
-            return new AviationPart() { Number = partNumber, Name = partName, Quantity = partQuantity, Price = partPrice };
+            AviationPart myPart = new AviationPart() { Number = partNumber, Name = partName, Quantity = partQuantity, Price = partPrice };
+            return myPart;
         }
 
         private string? AddAviationPartNumber()
@@ -131,11 +160,12 @@ namespace Aviation
 
         }
 
+        //get a valid part NAME from the user and return it
         private string AddAviationPartName(string partNumber)
         {
             while (true)
             {
-                Console.WriteLine("Please enter an aviation part name for part {partNumber}: ");
+                Console.WriteLine($"Please enter an aviation part name for part {partNumber}: ");
                 string? partName = Console.ReadLine();
                 if (!string.IsNullOrEmpty(partName))
                 {
@@ -146,6 +176,7 @@ namespace Aviation
             }
         }
 
+        // gets a valid part quantity from the user
         private int AddAviationPartQuantity(string partNumber)
         {
             while (true)
@@ -162,6 +193,7 @@ namespace Aviation
             }
         }
 
+        //gets valid price from user
         private decimal AddAviationPartPrice(string partNumber)
         {
             while (true)

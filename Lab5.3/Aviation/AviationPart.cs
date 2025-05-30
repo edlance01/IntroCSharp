@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Aviation
 {
+    /*
+     * Data bucket that holds 4 values ...aka DTO (data transfer objects)
+     */
     internal class AviationPart
     {
         public string Number { get; set; } = "";

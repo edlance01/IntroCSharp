@@ -92,7 +92,7 @@ namespace Aviation
                     AviationPartsCount++;
                 }
                 decimal partValue = part.Quantity * part.Price;
-                PrintInventoryValue(part.Number, part.Price);
+                PrintCurrentPartValue(part.Number, partValue);
             }
         }
 
@@ -106,7 +106,7 @@ namespace Aviation
             }
         }
 
-        private void PrintInventoryValue(string? partNumber, decimal partValue)
+        private void PrintCurrentPartValue(string? partNumber, decimal partValue)
         {
             Console.WriteLine($"The inventory value for {partNumber} is: {partValue}");
         }
@@ -129,7 +129,7 @@ namespace Aviation
             int partQuantity = AddAviationPartQuantity(partNumber);
             decimal partPrice = AddAviationPartPrice(partNumber);
             int engineHorsepower = AddEngineHorsepower(partNumber);
-            return new Engine() { Number = partNumber, Name = partName, Quantity = partQuantity, Price = partPrice, Horsepower = engineHorsepower };
+            return new Engine { Number = partNumber, Name = partName, Quantity = partQuantity, Price = partPrice, Horsepower = engineHorsepower };
         }
 
         private AviationPart? AddTire()
