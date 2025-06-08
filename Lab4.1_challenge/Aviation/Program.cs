@@ -6,6 +6,16 @@ class Program
     public static void Main(string[] args)
     {
         CommandController();
+
+        //better
+        /*
+         * Program program = new Program();
+         * program.CommandController();
+         * 
+         */
+
+        //or even
+        // new Program().CommandController()
     }
 
     public static void CommandController()

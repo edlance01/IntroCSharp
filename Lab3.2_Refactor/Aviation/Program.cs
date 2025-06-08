@@ -19,7 +19,8 @@ while (true)
             Console.WriteLine($"The total inventory value is: {totalValue}");
             break;
         case "exit":
-            return; // Use return to exit the method cleanly
+            break; // Use return to exit the method cleanly
+            //Note a return will return from a function, i.e. it would never run any code in the function after default.
         default:
             Console.WriteLine("Unknown command, please enter add, total, or exit.");
             break;

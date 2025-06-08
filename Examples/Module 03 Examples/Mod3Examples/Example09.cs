@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mod3Example09 {
+namespace Mod3Example {
     internal class Program {
         public static void Main(string[] args) {
             int i = 0;

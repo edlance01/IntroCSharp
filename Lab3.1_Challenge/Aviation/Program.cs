@@ -1,4 +1,11 @@
-﻿decimal totalOrder = 0.0m;
+﻿
+/*
+ * Format each entry, Part Number left aligned, Quantity right aligned, Part Price and Part Value both 
+ * right aligned using currency formatting.
+ */
+
+
+decimal totalOrder = 0.0m;
 bool stopLoop = false;
 
 for (int i = 0; i < 3 && !stopLoop; i++)
@@ -79,13 +86,16 @@ for (int i = 0; i < 3 && !stopLoop; i++)
     {
         decimal partValue = partQuantity * partPrice;
         totalOrder += partValue;
-        Console.WriteLine($"The inventory value for {partNumber} is: {partValue}");
+        // Console.WriteLine($"The inventory value for {partNumber} is: {partValue}");
+        Console.WriteLine($"{"Part Number",-10} {"Qty",4} {"Price",7} {"Part Value",9}");
+        Console.WriteLine($"{partNumber,-10} {partQuantity,5} {partPrice,8:C} {partValue,10:C}");
     }
 }
 
 if (!stopLoop)
 {
-    Console.WriteLine($"\nThe total order is: {totalOrder}");
+    Console.WriteLine($"\nThe total order is: {totalOrder, -15:C}");
+   
 }
 else
 {

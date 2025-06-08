@@ -14,6 +14,7 @@ class Program
             switch (command)
             {
                 case "add":
+                    //TODO show refactor using named tuple values
                     var part = AddAviationPart();
                  
                     if (part.Number != null)

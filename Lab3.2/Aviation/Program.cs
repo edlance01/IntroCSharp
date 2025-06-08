@@ -1,5 +1,6 @@
 ﻿decimal totalValue = 0.0m;
-while (true)
+bool exitProgram = false;
+while (!exitProgram)
 {
     Console.Write("Please enter a command: add, total, or exit: ");
     string? command = Console.ReadLine();
@@ -50,10 +51,12 @@ while (true)
             Console.WriteLine($"The total inventory value is: {totalValue}");
             break;
         case "exit":
-            goto EndProgram;
+            //goto EndProgram;
+            exitProgram = true;
+            break;
         default:
             Console.WriteLine("Unknown command, please enter add, total, or exit.");
             break;
     }
 }
-EndProgram:;
+//EndProgram:;
