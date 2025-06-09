@@ -1,4 +1,6 @@
-﻿decimal totalOrder = 0.0m;
+﻿using System.Runtime.InteropServices;
+
+decimal totalOrder = 0.0m;
 bool stopLoop = false;
 bool validPart = false;
 bool validQty = false;
@@ -10,14 +12,22 @@ for (int i = 0; i < 3 && !stopLoop; i++)
 
     while (!validPart)
     {
-        Console.Write("\nPlease enter an aviation part number (Ctrl+Z to exit): "); 
-        partNumber = Console.ReadLine();
-
-        if(partNumber == null)
+        Console.Write("\nPlease enter an aviation part number (Ctrl+Z to exit): ");
+        string? tempPartNumber = Console.ReadLine();
+        partNumber = tempPartNumber?.Trim().Trim('"');
+        Console.WriteLine("|" + partNumber + "|");
+        
+        if (partNumber == null)
         {
             Console.WriteLine("Program terminating");
             stopLoop = true;
             break;
+        }
+
+        if (string.IsNullOrWhiteSpace(partNumber))
+        {
+            Console.WriteLine("NULL or whitespace");
+            continue;
         }
 
         if (string.IsNullOrEmpty(partNumber))
@@ -28,6 +38,7 @@ for (int i = 0; i < 3 && !stopLoop; i++)
         }
         else
         {
+            Console.WriteLine($"You entered {partNumber}");
             validPart = true;
         }
     }
